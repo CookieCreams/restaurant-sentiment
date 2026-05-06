@@ -1,6 +1,6 @@
 # 🍕 Restaurant Sentiment Dashboard
 
-![CI](https://github.com/YOUR_USERNAME/YOUR_REPO/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/CookieCreams/restaurant-sentiment/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-green)
 ![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
@@ -64,8 +64,8 @@ HuggingFace Transformers ← classification multilingue
 ### Prérequis
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO
-cd YOUR_REPO
+git clone https://github.com/CookieCreams/restaurant-sentiment
+cd restaurant-sentiment
 pip install -r requirements.txt
 ```
 
