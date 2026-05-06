@@ -7,22 +7,32 @@ import pytest
 import duckdb
 from fastapi.testclient import TestClient
 
-# Crée une base de test temporaire AVANT d'importer l'app
 TEST_DB = "reviews_test.db"
 
 @pytest.fixture(autouse=True, scope="session")
-def setup_test_db(monkeypatch):
-    # Crée la base de test
+def setup_test_db():
     conn = duckdb.connect(TEST_DB)
-    # ... insert data ...
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS reviews (
+            review_id VARCHAR, stars INTEGER, text VARCHAR,
+            date DATE, useful INTEGER, langue VARCHAR,
+            sentiment VARCHAR, sentiment_score FLOAT
+        )
+    """)
+    conn.execute("""
+        INSERT INTO reviews VALUES
+        ('r1', 5, 'Amazing food!', '2023-01-01', 1, 'en', 'Very Positive', 0.95),
+        ('r2', 1, 'Terrible experience.', '2023-01-02', 0, 'en', 'Very Negative', 0.88),
+        ('r3', 3, 'It was okay.', '2023-01-03', 0, 'en', 'Neutral', 0.60)
+    """)
     conn.close()
-    
+
     # Redirige l'app vers la base de test
     import api.main as main
     main.conn = duckdb.connect(TEST_DB, read_only=True)
-    
+
     yield
-    
+
     os.remove(TEST_DB)
 
 from api.main import app
