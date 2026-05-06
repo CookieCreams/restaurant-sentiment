@@ -7,11 +7,11 @@
 
 > Pipeline NLP multilingue pour l'analyse de sentiments d'avis restaurants (FR/EN), avec API REST et dashboard interactif.
 
----
+<!-- ---
 
 ## 📸 Demo
 
-![demo](demo.gif)
+![demo](demo.gif) -->
 
 ---
 
