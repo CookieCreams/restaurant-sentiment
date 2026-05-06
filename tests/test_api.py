@@ -36,6 +36,7 @@ def setup_test_db():
     os.remove(TEST_DB)
 
 from api.main import app
+
 client = TestClient(app)
 
 def test_root():
