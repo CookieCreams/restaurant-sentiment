@@ -11,7 +11,10 @@ sys.path.append(".")
 from model.predict import predict_sentiment
 
 app = FastAPI(title="Restaurant Sentiment API")
-conn = duckdb.connect("reviews.db", read_only=True)
+
+db_path = "reviews.db"
+read_only = os.path.exists(db_path)
+conn = duckdb.connect(db_path, read_only=read_only)
 
 # --- Schéma de requête ---
 class ReviewRequest(BaseModel):
